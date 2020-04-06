@@ -22,7 +22,9 @@ export default class Days extends Component {
         this.state = {
             city:[],
             temperature: [],
-            wind: []
+            wind: [],
+            humidity: [],
+            date: []
         
         }
     }
@@ -34,7 +36,9 @@ export default class Days extends Component {
             this.setState({
                 temperature: response.data.list[0].main.temp,
                 wind: response.data.list[3].wind.speed,
-                city: response.data.city.name
+                city: response.data.city.name,
+                humidity: response.data.list[0].main.humidity,
+              
             })
            
             
@@ -49,6 +53,8 @@ export default class Days extends Component {
         const {temperature} = this.state
         const {wind} =this.state
         const {city}= this.state
+        const {humidity}=this.state
+        const {date} =this.state
 
         return (
             <div className="parent">   
@@ -60,8 +66,10 @@ export default class Days extends Component {
                     looking for ways to simplify for UI */}
                     {/* Removed stringify, no longer need. Needed to pull keys from array. Think Javascript */}
                     <h3>{city}</h3>
-                        <p>Current Temp: {temperature}</p>
-                        <p>Wind Speed: {wind} mph</p>
+                    <p>Today's Date: {date}</p>
+                    <p>Current Temp: {temperature}</p>
+                    <p>Wind Speed: {wind} mph</p>
+                    <p>Humidity: {humidity}%</p>
                 </div>         
             </div>
         )
