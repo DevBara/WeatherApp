@@ -20,6 +20,7 @@ export default class Days extends Component {
     super(props)
 
         this.state = {
+            city:[],
             temperature: [],
             wind: []
         
@@ -32,7 +33,8 @@ export default class Days extends Component {
             //we are calling on the weatherData state to update with api data
             this.setState({
                 temperature: response.data.list[0].main.temp,
-                wind: response.data.list[3].wind.speed
+                wind: response.data.list[3].wind.speed,
+                city: response.data.city.name
             })
            
             
@@ -46,6 +48,7 @@ export default class Days extends Component {
     //7 
         const {temperature} = this.state
         const {wind} =this.state
+        const {city}= this.state
 
         return (
             <div className="parent">   
@@ -55,6 +58,8 @@ export default class Days extends Component {
                     get rid of error : child cant be an object */}
                     {/* API is now rendering everything in the list file, not appealing
                     looking for ways to simplify for UI */}
+                    {/* Removed stringify, no longer need. Needed to pull keys from array. Think Javascript */}
+                    <h3>{city}</h3>
                         <p>Current Temp: {temperature}</p>
                         <p>Wind Speed: {wind} mph</p>
                 </div>         
