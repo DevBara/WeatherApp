@@ -30,11 +30,10 @@ export default class Days extends Component {
     }
 //2,3,4,5,6
     componentDidMount(){
-        axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=75287&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=75287&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
         .then(response => {
-            console.log(response)
             //we are calling on the weatherData state to update with api data
-            this.setState({weatherData: response.data})
+            this.setState({temperature: response.data.list[3]})
             
         })
         .catch(error => {
@@ -45,12 +44,18 @@ export default class Days extends Component {
     
     render() {
     //7 
-        const {weatherData} = this.state
+        const {temperature} = this.state
 
         return (
             <div className="parent">   
                 <div className="cards">
                     <h1>Check Your Weather</h1>
+                    <ul>
+                    {/* Used JSON stringify to turn object into string to 
+                    get rid of error : child cant be an object */}
+                        <li>{JSON.stringify({temperature})}</li>
+                    </ul>
+                    
                 </div>         
             </div>
         )
