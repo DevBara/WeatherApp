@@ -21,7 +21,8 @@ export default class Days extends Component {
 
         this.state = {
             temperature: [],
-            
+            wind: []
+        
         }
     }
 //2,3,4,5,6
@@ -30,7 +31,8 @@ export default class Days extends Component {
         .then(response => {
             //we are calling on the weatherData state to update with api data
             this.setState({
-                temperature: response.data.list[0].main.temp
+                temperature: response.data.list[0].main.temp,
+                wind: response.data.list[3].wind.speed
             })
            
             
@@ -40,10 +42,10 @@ export default class Days extends Component {
         })
     }
 
-    
     render() {
     //7 
         const {temperature} = this.state
+        const {wind} =this.state
 
         return (
             <div className="parent">   
@@ -53,8 +55,8 @@ export default class Days extends Component {
                     get rid of error : child cant be an object */}
                     {/* API is now rendering everything in the list file, not appealing
                     looking for ways to simplify for UI */}
-                        <p>{temperature}</p>
-                   
+                        <p>Current Temp: {temperature}</p>
+                        <p>Wind Speed: {wind} mph</p>
                 </div>         
             </div>
         )
