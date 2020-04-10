@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 
+//mintemp
+//city: null
+//description: null
+//maxtemp: null
 
 //The way we use axios.get is uniform. This is the foundation
 
@@ -30,7 +34,7 @@ export default class Days extends Component {
     }
 //2,3,4,5,6
     componentDidMount(){
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=75287&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=75287,us&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
         .then(response => {
             //we are calling on the weatherData state to update with api data
             this.setState({
@@ -38,9 +42,11 @@ export default class Days extends Component {
                 wind: response.data.list[3].wind.speed,
                 city: response.data.city.name,
                 humidity: response.data.list[0].main.humidity,
+                data: response.data.dt_txt
               
             })
-           
+            //using console log- returning undefined
+           console.log(response.list.dt_txt)
             
         })
         .catch(error => {
@@ -65,6 +71,7 @@ export default class Days extends Component {
                     {/* API is now rendering everything in the list file, not appealing
                     looking for ways to simplify for UI */}
                     {/* Removed stringify, no longer need. Needed to pull keys from array. Think Javascript */}
+                    {/* Need to find way to format dt_txt to show current date/day */}
                     <h3>{city}</h3>
                     <p>Today's Date: {date}</p>
                     <p>Current Temp: {temperature}</p>
@@ -75,3 +82,4 @@ export default class Days extends Component {
         )
     }
 }
+
