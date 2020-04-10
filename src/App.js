@@ -6,6 +6,7 @@ import DayTwo from './components/DayTwo'
 import DayThree from './components/DayThree'
 import DayFour from './components/DayFour'
 import DayFive from './components/DayFive'
+import PageNotFound from './components/PageNotFound'
 
 
 
@@ -41,10 +42,9 @@ export default class App extends Component {
             <Route path ="/daythree" component={DayThree}/>
             <Route path ="/dayfour" component ={DayFour}/>
             <Route path ="/dayfive" component={DayFive}/>
+            <Route component ={PageNotFound} />
           </Switch>
         </div>
-      <div className='App'>
-      </div>
     </Router>
     )
   }
