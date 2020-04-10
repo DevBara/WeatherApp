@@ -18,7 +18,7 @@ export default class App extends Component {
           <nav>
             <ul>
               <li>
-                <Link to ="/"> Today's Forecast</Link>
+                <Link to ="/CurrentDay"> Today's Forecast</Link>
               </li>
               <li>
                 <Link to ="/daytwo"> Day Two Forecast</Link>
@@ -36,25 +36,14 @@ export default class App extends Component {
           </nav>
           
           <Switch>
-            <Route path ="/today" component={CurrentDay}>
-
-            </Route>
-            <Route path ="/daytwo">
-              <DayTwo />
-            </Route>
-            <Route path ="/daythree">
-              <DayThree />
-            </Route>
-            <Route path ="/dayfour">
-              <DayFour />
-            </Route>
-            <Route path ="/dayfive">
-              <DayFive />
-            </Route>
+            <Route path ="/currentday" component ={CurrentDay} />
+            <Route path ="/daytwo" component={DayTwo}/>
+            <Route path ="/daythree" component={DayThree}/>
+            <Route path ="/dayfour" component ={DayFour}/>
+            <Route path ="/dayfive" component={DayFive}/>
           </Switch>
         </div>
       <div className='App'>
-        <CurrentDay />
       </div>
     </Router>
     )
