@@ -6,4 +6,4 @@ function DayTwo(){
     )
 }
 
-export default DayTwo;
+export default DayTwo
